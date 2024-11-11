@@ -1,0 +1,137 @@
+                                                                GRID VS FLEX
+Property	Grid	Flexbox
+Dimension	Two – Dimensional	One – Dimensional
+Features	Can flex combination of items through space-occupying Features	Can push content element to extreme alignment
+Support Type	Layout First	Content First
+Primary Use Case	Creating complex layouts with rows and columns	Aligning items in a row or column
+Performance	Can be less in performance due to very complex grids	Generally faster for simple layouts
+
+                                                              Auto fill vs Auto fit
+The auto-fill property
+The auto-fill property is used to fill the rows with possible columns, the column which is added will occupy the space and the other column will be empty. The auto-fill property is an important property of the CSS grid and is mostly used so as to create a responsive layout without using media queries.
+Syntax
+Let’s look at the syntax of the auto-fill property.
+:auto-fill;
+Example
+In the following program,
+•	We first made a class “autofill” and then within the class we placed 3 items, each having different colors showcasing different boxes.
+•	We set the “display property” to grid and assigned a height and width to the container. Later, auto-fill property is used to set its minimax value.
+•	Finally, we gave dimensions to the 3 items that we made earlier.
+Open Compiler
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Example of using the auto-fill property</title>
+   <style>
+      .first-item {
+         background-color: violet;
+         border: solid black 4px ;
+         max-width: 100%;
+         min-height: 150px;
+         height: auto;
+      }
+      .second-item {
+         background-color: blue;
+         border: solid black 5px;
+         min-height: 150px;
+         max-width: 100%;
+         height: auto;
+      }
+      .third-item {
+         background-color: maroon;
+         border: solid black 5px;
+         min-height: 150px;
+         max-width: 100%;
+         height: auto;
+      }
+      .autfill {
+         margin-top: 4%;
+         border: solid black 3px;
+         width: 80vh;
+         grid-template-columns: repeat(
+         auto-fill, minmax(190px, 1fr));
+         display: grid;
+         gap: 5px;
+      }
+      .para{
+         text-align: center;
+      }
+   </style>
+</head>
+<body>
+   <div class="content">
+      <div class="para"><h1>This is an example!!</h1></div>
+      <div class="autfill">
+         <div class="first-item"><h2 class="group">1</h1></div>
+         <div class="second-item"><h2 class="group">2</h1></div>
+         <div class="third-item"><h2 class="group">3</h1></div>
+      </div>
+   </div>
+</body>
+</html>
+ 
+The auto-fit property
+The “auto-fit” property is similar to the “auto-fill” property the only difference is that the property will expand its size by occupying the space available to it, depending up on the width of the device. If all the items of the grid are empty, then all of them are treated as a single track.
+Example
+In the following example, we set the property value to auto-fit. The auto-fit property will stretch itself, so as to fill the width of the entire row and fills any empty spaces by stretching itself.
+Open Compiler
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <title>Example of using the auto-fit property</title>
+   <style>
+      #container {
+         display:grid;
+         width:100%;
+         border:2px solid blue;
+         grid-template-columns: repeat(auto-fit, minmax(100px, 2fr));
+      }
+      #first-item,#second-item,#third-item {
+         height:100px;
+         margin:3px 15px 15px 2px;
+         background-color: blue;
+      }
+   </style>
+</head>
+<body>
+   <div id="container">
+      <div id="first-item">1</div>
+      <div id="second-item">2</div>
+      <div id="third-item">3</div>
+   </div>
+</body>
+<html>
+In the above example you can see that the items have filled the whole width of the row and the area where there is any space left.
+
+Explore our latest online courses and learn new skills at your own pace. Enroll and become a certified expert to boost your career.
+
+The auto-fit vs the auto-fill property
+The grid layout has different properties. Both auto-fit and auto-fill properties are part of the CSS grid module. The syntax of the grid layout is as follows −
+.container-grid{
+   display: grid;
+}
+Above is the syntax for the grid layout which sets the display property of a HTML element to grid layout.
+ 
+                                                                Grid auto rows
+The grid-auto-rows CSS property is part of the CSS Grid Layout specification, specifying the size of the grid rows that were created without having an explicit size. In other words, this property sets the size of implicit rows and any other rows that have not been explicitly sized in the grid-template-rows property.
+.grid-container {
+  display: grid;
+  grid-template-areas: "media detail detail"
+                       "media detail detail";
+  grid-template-rows: 200px;
+  grid-auto-rows: 150px;
+}
+ 
+That example creates a grid container with two rows defined by grid-template-areas. The first row has an explicit size set by grid-template-rows, but not the second row. This is where grid-auto-rows kicks in and sets that row’s size to 150px.
+grid-auto-rows use cases
+As said above, grid-auto-rows sets the size of any rows that don’t have an explicit size. Now the question is, what kind of rows don’t have an explicit size? Or, how does a grid create rows without an explicit size?
+Here are some situations where that might come up.
+Rows that are defined by grid-template-areas that have no explicit size set by grid-template-rows
+The first case is the one that we saw at the top of this article. A grid can have an explicit row defined by grid-template-areas without having its size set explicitly by the grid-template-rows property.
+.grid-container {
+  display: grid;
+  grid-template-areas: "media detail detail"
+                       "media detail detail"; /* 2 rows */
+  grid-template-rows: 200px; /* 1 size */
+}
+The first row is set to 200px, and since the last row is not set to any explicit size, it will be set to auto. 
